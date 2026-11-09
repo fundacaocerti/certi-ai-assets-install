@@ -39,7 +39,7 @@ trap 'rm -rf "$work"' 0
 trap 'exit 1' HUP INT TERM
 
 git init -q "$work/assets"
-repo_url=${CERTI_AI_ASSETS_REPO_URL:-git@bitbucket.org:certi_repos/certi-ai-assets.git}
+repo_url=${CERTI_AI_ASSETS_REPO_URL:-git@ssh.bitbucket.org:certi_repos/certi-ai-assets.git}
 git -C "$work/assets" fetch -q --depth=1 --no-tags -- "$repo_url" HEAD ||
     fail 'Não foi possível buscar a branch padrão remota.'
 revision=$(git -C "$work/assets" rev-parse --verify FETCH_HEAD)
